@@ -35,20 +35,20 @@ def work(n, k, p):
     networkx.draw_circular(G, with_labels=False)
     plt.savefig('final-%f.png' % p)
     print('p=%f:' % p)
-    l[p - 0.0000001] = networkx.average_shortest_path_length(G)
-    c[p - 0.0000001] = networkx.average_clustering(G)
-    # print('characteristic path: %f' % networkx.average_shortest_path_length(G))
-    # print('clustering coefficient: %f' % networkx.average_clustering(G))
+    l[p] = networkx.average_shortest_path_length(G)
+    c[p] = networkx.average_clustering(G)
+    print('characteristic path: %f' % networkx.average_shortest_path_length(G))
+    print('clustering coefficient: %f' % networkx.average_clustering(G))
 
 
 if __name__ == '__main__':
     n = int(raw_input('Please input n:'))
     k = int(raw_input('Please input k:'))
     # p = float(raw_input('Please input p:'))
-    start = 0.0000001
-    distance = 0.01
+    start = 0
+    distance = 0.0005
     for i in range(0, 100):
-        p = start + distance
+        p = start + distance * i
         work(n, k, p)
     with open('l_result.json', 'w') as f:
         f.write(json.dumps(l))

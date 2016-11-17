@@ -111,4 +111,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+final*
+*.zip
+
 
